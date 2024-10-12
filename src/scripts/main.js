@@ -1,19 +1,5 @@
 'use strict';
 
-// const firstPromise = new Promise((resolve, reject) => {
-//   let isTrue = false;
-
-//   setTimeout(() => {
-//     document.addEventListener('click', () => {
-//       isTrue = true;
-//       resolve('First promise was resolved');
-//     });
-//   }, 3000);
-
-//   if (isTrue === false) {
-//     reject(new Error('First promise was rejected'));
-//   }
-// });
 async function wait(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
@@ -28,7 +14,7 @@ const firstPromise = new Promise(async (resolve, reject) => {
 
   await wait(3000);
 
-  if (isTrue === false) {
+  if (!isTrue) {
     reject(new Error('First promise was rejected'));
   }
 });
@@ -71,14 +57,14 @@ const thirdPromise = new Promise((resolve, reject) => {
 });
 
 function success(mess) {
-  cerateDiv('success', mess);
+  createDiv('success', mess);
 }
 
 function error(mess) {
-  cerateDiv('error', mess);
+  createDiv('error', mess);
 }
 
-function cerateDiv(className, message) {
+function createDiv(className, message) {
   const div = document.createElement('div');
 
   div.setAttribute('data-qa', 'notification');
